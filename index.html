@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Fantastic Mr. Fox</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    @font-face{
+      font-family:'CustomFont';
+      src:url('fonts/21-font.otf') format('opentype');
+    }
+    :root{
+      --bg:#fff8e1;
+      --card:#fffdf9;
+      --accent:#d97706;
+      --accent-2:#663907;
+      --muted:#6e4516;
+      --shadow: 0 10px 30px rgba(12,10,9,.12);
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%;}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: 'Poppins', Inter, Arial, sans-serif;
+      background:linear-gradient(180deg,#fff7e6 0%, #fff1d6 60%);
+      color:var(--muted);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+
+    /* Плавная прокрутка к слайдам */
+    main{scroll-snap-type:y mandatory;}
+    section{scroll-snap-align:start; scroll-snap-stop:always}
+
+    /* Красивая полоса прокрутки */
+    /* WebKit */
+    ::-webkit-scrollbar{width:12px}
+    ::-webkit-scrollbar-track{background:linear-gradient(180deg,#fff7e6,#fff1d6);border-radius:12px}
+    ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--accent-2),var(--accent));border-radius:12px;border:3px solid rgba(255,255,255,0.6)}
+    ::-webkit-scrollbar-thumb:hover{filter:brightness(.95)}
+    /* Firefox */
+    html{scrollbar-width:thin;scrollbar-color:var(--accent) rgba(255,255,255,0.6)}
+
+    /* Слайд */
+    section{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      padding:48px 20px;
+      gap:16px;
+    }
+
+    /* Заголовки */
+    h1{font-family:'CustomFont',serif;font-size:2.2rem;margin:0;color:#6b4519;letter-spacing:0.6px;font-weight:bold}
+    p{max-width:820px;margin:0 auto;color:var(--muted);font-size:1.05rem}
+
+    /* Кнопки */
+    .btn{display:inline-block;background:linear-gradient(180deg,var(--accent) 0%,var(--accent-2)100%);color:#fff;padding:12px 22px;border-radius:12px;text-decoration:none;font-weight:600;box-shadow:var(--shadow);transition:transform .18s ease,box-shadow .18s ease}
+    .btn:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(12,10,9,.18)}
+
+    /* Галерея */
+    .gallery{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+    .gallery img{width:300px;max-width:100%;height:auto;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.12);transition:transform .3s ease,filter .3s ease}
+    .gallery img:hover{transform:translateY(-6px) scale(1.02);filter:saturate(1.05)}
+
+    /* Блок с текстом и колонками */
+    .side-gallery-container{display:flex;gap:22px;align-items:flex-start;justify-content:center;width:100%;max-width:1200px;margin-top:20px}
+    .side-text{flex:1;background:var(--card);padding:18px;border-radius:14px;box-shadow:var(--shadow);line-height:1.6}
+    .side-img{flex:0 0 190px;border-radius:12px;object-fit:cover;box-shadow:0 8px 24px rgba(0,0,0,.1);transition:transform .3s ease,filter .3s ease}
+    .side-img:hover{transform:translateY(-6px) scale(1.02);filter:saturate(1.05)}
+    .side-img-column{display:flex;flex-direction:column;gap:12px;flex:0 0 190px}
+    .side-img-column img{width:100%;border-radius:10px;object-fit:cover;transition:transform .3s ease,filter .3s ease}
+    .side-img-column img:hover{transform:translateY(-6px) scale(1.02);filter:saturate(1.05)}
+
+    /* Карточки внутри текста */
+    .fact{background:linear-gradient(180deg,#fffdf9, #fff7f0);padding:12px;border-radius:10px;margin-bottom:10px;border-left:4px solid var(--accent)}
+
+    .alt-btn{display:inline-block;margin-top:12px;padding:10px 16px;background:var(--accent);color:#fff;border-radius:10px;text-decoration:none}
+
+    .music-player{margin-top:14px}
+
+    /* Анимация появления */
+    .fade-in{animation:fadeInUp .6s ease both}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+    @media (max-width:920px){.side-gallery-container{flex-direction:column;align-items:center}.side-img,.side-img-column{flex:0 0 auto;width:220px}.side-text{max-width:100%}}
+    @media (max-width:420px){.gallery img{width:100%}.btn{width:100%;text-align:center}}
+  </style>
+</head>
+<body>
+
+  <main>
+  <section id="slide1" class="fade-in">
+    <h1>Fantastic Mr. Fox</h1>
+    <p>Добро пожаловать на мини‑сайт о мультфильме «Fantastic Mr. Fox» — шедевре останимационного кинематографа, созданном режиссёром Уэсом Андерсоном. Этот удивительный фильм повествует о хитром мистере Фоксе, который пытается обмануть трёх фермеров, держащих его и его семью в голоде. Здесь собраны интересные факты, редкие изображения персонажей и музыка из фильма — всё в уютном оформлении. Откройте для себя волшебный мир, где каждый кадр — это произведение искусства, созданное с огромной любовью и вниманием к деталям.</p>
+    <a class="btn" href="#slide2">Узнать больше</a>
+    <div class="gallery" aria-hidden="false">
+      <img src="image/fantastic-mr-fox.jfif" alt="Мистер Фокс" loading="lazy">
+      <img src="image/mr-fox.jfif" alt="Мистер Фокс в шляпе" loading="lazy">
+      <img src="image/fantastic-mr-fox-1.jfif" alt="Сцена из мультфильма" loading="lazy">
+    </div>
+  </section>
+
+  <section id="slide2">
+    <h1>Факты о мультфильме</h1>
+    <div class="side-gallery-container fade-in">
+      <img src="image/fantastic-mr-fox-bandit-hat-ad.jfif" alt="Мистер Фокс в шляпе" class="side-img" loading="lazy">
+      <div class="side-text">
+        <div class="fact"><strong>Волк:</strong> Финальная встреча мистера Фокса с волком символична — это диалог цивилизованного и дикого «я».</div>
+        <div class="fact"><strong>Цветовая гамма:</strong> Преобладают осенние оттенки — жёлтый, оранжевый, коричневый; синий используется как маркер «чужого».</div>
+        <div class="fact"><strong>Ручная работа и шерсть:</strong> Практически вся анимация покадровая (стоп-моушн); для кукол использовали настоящую шерсть разных животных.</div>
+        <div class="fact"><strong>Куклы:</strong> В проекте было создано около 535 уникальных кукол с более 80 сменяемыми лицами для передачи эмоций.</div>
+      </div>
+      <div class="side-img-column">
+        <img src="image/agnes.jfif" alt="Агнес" loading="lazy">
+        <img src="image/ash.jfif" alt="Ясень" loading="lazy">
+        <img src="image/kristofferson.jfif" alt="Кристоффersон" loading="lazy">
+      </div>
+    </div>
+
+    <a class="alt-btn" href="#slide3">Далее</a>
+  </section>
+
+  <section id="slide3" class="fade-in">
+    <h1>Дополнительно</h1>
+    <div class="side-gallery-container">
+      <div class="side-img-column">
+        <img src="image/ig-anushkakotian.jfif" alt="Персонаж 1" loading="lazy">
+        <img src="image/Без названия.jfif" alt="Без названия" loading="lazy">
+        <img src="image/Без названия (1).jfif" alt="Персонаж 2" loading="lazy">
+      </div>
+      <div class="side-text">
+        <div class="fact"><strong>Костюмы и реквизит:</strong> Миниатюрные ручные костюмы изготавливались вручную с точностью до миллиметра. Каждый элемент одежды был сшит опытными портными, используя различные ткани и фурнитуру.</div>
+        <div class="fact"><strong>Режиссура Уэса Андерсона:</strong> Режиссер привнес свой узнаваемый стиль симметричных кадров, пастельных цветов и детализированных декораций. Это его первый полнометражный фильм в технике стоп-моушн.</div>
+        <div class="fact"><strong>Сценография и декорации:</strong> Каждый набор создавался тщательно — от норы мистера Фокса до ферм враждебных фермеров. Проработанная палитра и миниатюрный реквизит создают иммерсивную атмосферу.</div>
+        <div class="fact"><strong>Музыка и звук:</strong> Пит Мондриан и аутентичный джаз дополняют визуальный стиль фильма. Звуковое оформление включает классическую и современную музыку.</div>
+        <div class="fact"><strong>Премьера и признание:</strong> Фильм вышел в 2009 году и быстро стал культовым. Он был номинирован на премию Оскар и получил множество наград на кинофестивалях по всему миру.</div>
+      </div>
+      <div class="side-img-column">
+        <img src="image/Без названия (2).jfif" alt="Персонаж 3" loading="lazy">
+        <img src="image/su-cute.jfif" alt="Милашка" loading="lazy">
+        <img src="image/mr-fox-exquisite-taste.jfif" alt="Мистер Фокс с вкусом" loading="lazy">
+      </div>
+    </div>
+
+    <div class="music-player">
+      <audio controls>
+        <source src="music/mr-fox-in-the-fields.mp3" type="audio/mpeg">
+        Ваш браузер не поддерживает аудио.
+      </audio>
+    </div>
+
+    <a class="alt-btn" href="#slide2">Назад</a>
+  </section>
+
+  </main>
+
+</body>
+</html>
